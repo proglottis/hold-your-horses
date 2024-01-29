@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hold-your-horses/static/css/main.62a36f23.css",
+    "main.js": "/hold-your-horses/static/js/main.c4c63d25.js",
+    "static/js/787.f25fc998.chunk.js": "/hold-your-horses/static/js/787.f25fc998.chunk.js",
+    "index.html": "/hold-your-horses/index.html",
+    "main.62a36f23.css.map": "/hold-your-horses/static/css/main.62a36f23.css.map",
+    "main.c4c63d25.js.map": "/hold-your-horses/static/js/main.c4c63d25.js.map",
+    "787.f25fc998.chunk.js.map": "/hold-your-horses/static/js/787.f25fc998.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.62a36f23.css",
+    "static/js/main.c4c63d25.js"
+  ]
+}
