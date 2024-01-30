@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Keypad from './Keypad';
 
-export default function Timepad({ onPlay }) {
+export default function Timepad({ onPlay, emoji }) {
   const [time, setTime] = useState("");
   const [showPlay, setShowPlay] = useState(false);
 
@@ -36,13 +36,13 @@ export default function Timepad({ onPlay }) {
   const seconds = timePadded.slice(4, 6);
 
   return (
-    <div className="container mx-auto">
-      <div className="flex text-2xl m-4">
-        <div className="flex-none p-4">🐴</div>
+    <div>
+      <div className="flex text-4xl m-4">
+        <div className="flex-none p-4">{emoji}</div>
         <div className="flex-auto text-right bg-gray-200 rounded-lg p-4">
-          <span>{hours}h</span>
-          <span>{minutes}m</span>
-          <span>{seconds}s</span>
+          <span className={hours > 0 ? "text-sky-500" : ""}>{hours}h</span>
+          <span className={hours > 0 || minutes > 0 ? "text-sky-500" : ""}>{minutes}m</span>
+          <span className={hours > 0 || minutes > 0 || seconds > 0 ? "text-sky-500" : ""}>{seconds}s</span>
         </div>
       </div>
       <div className="flex place-content-center">

@@ -4,7 +4,7 @@ export default function Keypad({ showPlay, onKeyPress, onDelete, onPlay }) {
   if (showPlay) {
     play = <button
       onClick={onPlay}
-      className="col-start-2 text-2xl size-16 rounded-full bg-sky-500 hover:bg-sky-700">▶</button>;
+      className="col-start-2 text-4xl size-24 rounded-full bg-sky-500 hover:bg-sky-700">▶</button>;
   }
 
   return (
@@ -28,7 +28,7 @@ export default function Keypad({ showPlay, onKeyPress, onDelete, onPlay }) {
 
 function Key({ value, onClick }) {
   return (
-    <button onClick={() => onClick(value)} className="text-2xl size-16 rounded-full bg-gray-200 hover:bg-gray-400">
+    <button onClick={() => onClick(value)} className="text-4xl size-24 rounded-full bg-gray-200 hover:bg-gray-400">
       {value}
     </button>
   );
