@@ -44,14 +44,12 @@ export default function Timer({ emoji, startedAt, timespan, onRestart, onRemove 
   }
 
   return (
-    <div className="m-4">
-      <div class="relative">
-        <Progress percent={percent} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          {display}
-        </div>
-        <button onClick={onRemove} className="absolute right-0 top-0 size-10 rounded-full bg-gray-200 hover:bg-gray-400">✖</button>
+    <div className="flex relative place-content-center m-4 rounded-lg bg-gray-50 p-4">
+      <Progress percent={percent} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        {display}
       </div>
+      <button onClick={onRemove} className="absolute right-4 top-4 size-10 rounded-full bg-gray-200 hover:bg-gray-400">✖</button>
     </div>
   );
 }

@@ -1,10 +1,17 @@
 
-export default function Keypad({ showPlay, onKeyPress, onDelete, onPlay }) {
+export default function Keypad({ showPlay, onKeyPress, onDelete, onPlay, showCancel, onCancel }) {
   var play;
   if (showPlay) {
     play = <button
       onClick={onPlay}
       className="col-start-2 text-4xl size-24 rounded-full bg-sky-500 hover:bg-sky-700">▶</button>;
+  }
+
+  var cancel;
+  if (showCancel) {
+    cancel = <button
+      onClick={onCancel}
+      className="col-start-3 text-xl size-20 rounded-full bg-red-200 hover:bg-red-400">🗑️</button>;
   }
 
   return (
@@ -21,7 +28,7 @@ export default function Keypad({ showPlay, onKeyPress, onDelete, onPlay }) {
       <Key onClick={(value) => onKeyPress(value)} value="00" />
       <Key onClick={(value) => onKeyPress(value)} value="0" />
       <Key onClick={onDelete} value="⌫" />
-      {play}
+      {play}{cancel}
     </div>
   );
 }

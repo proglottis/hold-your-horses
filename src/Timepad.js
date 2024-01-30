@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Keypad from './Keypad';
 
-export default function Timepad({ onPlay, emoji }) {
+export default function Timepad({ onPlay, emoji, showCancel, onCancel }) {
   const [time, setTime] = useState("");
   const [showPlay, setShowPlay] = useState(false);
 
@@ -51,6 +51,8 @@ export default function Timepad({ onPlay, emoji }) {
           onKeyPress={onKeyPress}
           onDelete={onDelete}
           onPlay={() => onPlay(hours, minutes, seconds)}
+          showCancel={showCancel}
+          onCancel={onCancel}
         />
       </div>
     </div>
