@@ -5,7 +5,7 @@ import Timer from './Timer';
 let timerID = 0;
 
 function App() {
-  const emoji = "🐴";
+  const [emoji, setEmoji] = useState("🐴");
   const [timers, setTimers] = useState([]);
   const [addTimer, setAddTimer] = useState(false);
   const [now, setNow] = useState(new Date());
@@ -63,7 +63,7 @@ function App() {
 
   let display;
   if(addTimer || timers.length < 1) {
-    display = <Timepad emoji={emoji} onPlay={onPlay} showCancel={timers.length > 0} onCancel={onCancel} />;
+    display = <Timepad setEmoji={setEmoji} emoji={emoji} onPlay={onPlay} showCancel={timers.length > 0} onCancel={onCancel} />;
   } else {
     display = (
       <div>
