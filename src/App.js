@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Timepad from './Timepad';
 import Timer from './Timer';
 
@@ -8,6 +8,15 @@ function App() {
   const emoji = "🐴";
   const [timers, setTimers] = useState([]);
   const [addTimer, setAddTimer] = useState(false);
+  const [now, setNow] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => setNow(new Date()), 100);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
 
   function onPlay(hours, minutes, seconds) {
     var span = Number(hours) * 60 * 60 * 1000;
@@ -60,7 +69,15 @@ function App() {
       <div>
         <div>
           {timers.map((timer) =>
-            <Timer key={timer.id} emoji={timer.emoji} startedAt={timer.startedAt} timespan={timer.timespan} onRestart={() => onRestart(timer.id)} onRemove={() => onRemove(timer.id)} />
+            <Timer
+              key={timer.id}
+              emoji={timer.emoji}
+              startedAt={timer.startedAt}
+              timespan={timer.timespan}
+              onRestart={() => onRestart(timer.id)}
+              onRemove={() => onRemove(timer.id)}
+              now={now}
+            />
           )}
         </div>
         <div className="flex place-content-center">

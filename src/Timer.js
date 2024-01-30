@@ -1,16 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Progress from './Progress';
 
-export default function Timer({ emoji, startedAt, timespan, onRestart, onRemove }) {
-  const [now, setNow] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => setNow(new Date()), 100);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
+export default function Timer({ emoji, startedAt, timespan, onRestart, onRemove, now }) {
   const elapsed = now.getTime() - startedAt.getTime();
   const done = elapsed >= timespan;
 
