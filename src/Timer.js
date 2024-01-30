@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Progress from './Progress';
 
 export default function Timer({ emoji, startedAt, timespan, onRestart, onRemove, now }) {
