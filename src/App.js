@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {v4 as uuidv4} from 'uuid';
 import Timepad from './Timepad';
 import Timer from './Timer';
 
@@ -37,7 +38,7 @@ function App() {
 
     setAddTimer(false);
     setTimers([...timers, {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       emoji: emoji,
       startedAt: new Date().getTime(),
       timespan: span,
