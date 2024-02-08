@@ -2,13 +2,22 @@ import { useState, useEffect } from 'react';
 import Timepad from './Timepad';
 import Timer from './Timer';
 
-let timerID = 0;
-
 function App() {
   const [emoji, setEmoji] = useState("🐴");
-  const [timers, setTimers] = useState([]);
+  const [timers, setTimers] = useState(() => {
+    const timers = JSON.parse(localStorage.getItem("timers"));
+    if (timers) {
+      return timers;
+    } else {
+      return [];
+    }
+  });
   const [addTimer, setAddTimer] = useState(false);
   const [now, setNow] = useState(new Date());
+
+  useEffect(() => {
+    localStorage.setItem("timers", JSON.stringify(timers));
+  }, [timers]);
 
   useEffect(() => {
     const interval = setInterval(() => setNow(new Date()), 100);
@@ -16,7 +25,6 @@ function App() {
       clearInterval(interval);
     };
   }, []);
-
 
   function onPlay(hours, minutes, seconds) {
     var span = Number(hours) * 60 * 60 * 1000;
@@ -29,9 +37,9 @@ function App() {
 
     setAddTimer(false);
     setTimers([...timers, {
-      id: timerID++,
+      id: crypto.randomUUID(),
       emoji: emoji,
-      startedAt: new Date(),
+      startedAt: new Date().getTime(),
       timespan: span,
     }]);
   }
@@ -41,7 +49,7 @@ function App() {
       if (timer.id === id) {
         return {
           ...timer,
-          startedAt: new Date()
+          startedAt: new Date().getTime()
         };
       } else {
         return timer;
@@ -72,7 +80,7 @@ function App() {
             <Timer
               key={timer.id}
               emoji={timer.emoji}
-              startedAt={timer.startedAt}
+              startedAt={new Date(timer.startedAt)}
               timespan={timer.timespan}
               onRestart={() => onRestart(timer.id)}
               onRemove={() => onRemove(timer.id)}
